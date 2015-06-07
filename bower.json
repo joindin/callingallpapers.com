@@ -1,0 +1,29 @@
+{
+  "name": "callingallpapers",
+  "version": "0.0.1",
+  "authors": [
+    "Andreas Heigl <andreas@heigl.org>"
+  ],
+  "description": "Show Events from different SOurces that currently have a CfP open",
+  "main": "index.html",
+  "keywords": [
+    "cfp",
+    "callforpapers"
+  ],
+  "license": "MIT",
+  "homepage": "calingallpapers.com",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "angularjs": "~1.4.0",
+    "bootstrap": "~3.3.4",
+    "angular-tooltips": "~0.1.10",
+    "fontawesome": "~4.3.0"
+  }
+}

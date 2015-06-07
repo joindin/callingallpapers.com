@@ -1,0 +1,73 @@
+<html ng-app="callingallpapers">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <title>CallingAllPapers</title>
+        <link rel="stylesheet" href="inc/lib/bootstrap/dist/css/bootstrap.min.css">
+        <link rel="stylesheet" href="inc/lib/angular-tooltips/dist/angular-tooltips.min.css">
+        <link rel="stylesheet" href="inc/lib/fontawesome/css/font-awesome.min.css">
+    </head>
+    <body>
+        <nav class="navbar navbar-default">
+            <div class="container-fluid">
+                <!-- Brand and toggle get grouped for better mobile display -->
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="#">CallingAllPapers</a>
+                </div>
+
+            <!-- Collect the nav links, forms, and other content for toggling -->
+                <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                    <form class="navbar-form navbar-right" role="search">
+                        <div class="form-group">
+                            <input type="text" class="form-control" ng-model="search" placeholder="Filter">
+                        </div>
+                    </form>
+                </div><!-- /.navbar-collapse -->
+            </div><!-- /.container-fluid -->
+        </nav>
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-xs-12 col-md-8">
+            <p class="alert alert-warning" ng-Show="search">Showing only events containing "<strong>{{search}}</strong>"</p>
+            <ul class="list-group" ng-controller="EventsCtrl">
+                <li class="list-group-item" ng-repeat="event in events | filter:search | orderBy: 'cfp_end_date' ">
+                    <h4>
+                        <a href="{{event.cfp_url}}">{{event.name}}</a>
+                        <span tooltips tooltip-content="CfP starts {{event.cfp_start_date | date: 'longDate'}} and runs until {{event.cfp_end_date | date: 'longDate'}}" class="badge">{{event.cfp_end_date | dateDiff : Date.now()}} Days left</span>
+                        <a ng-Hide="event.latitude==0 && event.longitude==0" class="pull-right" href="http://www.openstreetmap.org?mlat={{event.latitude}}&mlon={{event.longitude}}#map=5/{{event.latitude}}/{{event.longitude}}">
+                            <i class="fa fa-globe"></i>
+                        </a>
+                    </h4>
+                    <div>
+                        Event starts {{event.start_date | date: 'longDate'}} and ends {{event.end_date | date: 'longDate'}}
+                    </div>
+                    <div style="margin-bottom: 0.5em">
+                        <span ng-repeat="tag in event.tags" style="margin-right:0.5em;" class="label label-info">
+                            {{tag}}
+                        </span>
+                    </div>
+                    <div>
+                        {{event.description}}
+                    </div>
+                </li>
+            </ul>
+                </div>
+                <div class="col-xs-6 col-md-4">
+                    Data is provided via the joind.in-API
+                </div>
+            </div>
+        </div>
+        <script src="inc/lib/angularjs/angular.min.js"></script>
+        <script src="inc/lib/angularjs/i18n/angular-locale_en-UK.js"></script>
+        <script src="inc/lib/angular-tooltips/dist/angular-tooltips.min.js"></script>
+        <script src="inc/js/app.js"></script>
+    </body>
+</html>
