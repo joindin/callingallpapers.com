@@ -4,11 +4,7 @@ This site shows open Calls for Papers (CfPs) that are available via the [joind.i
 
 ## Limitations
 
-This is just a draft currently. The thing that comes before "Pre-Alpha" you could say. Currently the
-data is a "hard-coded" JSON-response from the joind.in-API. To get current data you can run the following command
-in the root folder of the repo:
-
-    curl -o events.json "http://api.joind.in/v2.1/events?filter=cfp&verbose=yes"
+This is just a draft currently. The thing that comes before "Pre-Alpha" you could say. 
 
 ## Setup
 
