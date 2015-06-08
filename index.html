@@ -42,13 +42,13 @@
                 <li class="list-group-item" ng-repeat="event in events | filter:search | orderBy: 'cfp_end_date' ">
                     <h4>
                         <a href="{{event.cfp_url}}">{{event.name}}</a>
-                        <span tooltips tooltip-content="CfP starts {{event.cfp_start_date | date: 'longDate'}} and runs until {{event.cfp_end_date | date: 'longDate'}}" class="badge">{{event.cfp_end_date | dateDiff : Date.now()}} Days left</span>
+                        <span tooltips tooltip-content="CfP runs {{event.cfp_start_date | dateRangeFormat: event.cfp_end_date}}" class="badge">{{event.cfp_end_date | dateDiff : Date.now()}} Days left</span>
                         <a ng-Hide="event.latitude==0 && event.longitude==0" class="pull-right" href="http://www.openstreetmap.org?mlat={{event.latitude}}&mlon={{event.longitude}}#map=5/{{event.latitude}}/{{event.longitude}}">
                             <i class="fa fa-globe"></i>
                         </a>
                     </h4>
                     <div>
-                        Event starts {{event.start_date | date: 'longDate'}} and ends {{event.end_date | date: 'longDate'}}
+                        {{event.description}}
                     </div>
                     <div style="margin-bottom: 0.5em">
                         <span ng-repeat="tag in event.tags" style="margin-right:0.5em;" class="label label-info">
@@ -56,7 +56,7 @@
                         </span>
                     </div>
                     <div>
-                        {{event.description}}
+                        {{ event.start_date | dateRangeFormat: event.end_date }} @ {{ event.location }}
                     </div>
                 </li>
             </ul>
@@ -69,6 +69,9 @@
         <script src="inc/lib/angularjs/angular.min.js"></script>
         <script src="inc/lib/angularjs/i18n/angular-locale_en-UK.js"></script>
         <script src="inc/lib/angular-tooltips/dist/angular-tooltips.min.js"></script>
+        <script src="inc/lib/moment/min/moment-with-locales.min.js"></script>
+        <script src="inc/lib/twix/bin/twix.min.js"></script>
+        <script src="inc/lib/twix/bin/locale.min.js"></script>
         <script src="inc/js/app.js"></script>
     </body>
 </html>

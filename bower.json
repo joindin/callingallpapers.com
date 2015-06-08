@@ -24,6 +24,7 @@
     "angularjs": "~1.4.0",
     "bootstrap": "~3.3.4",
     "angular-tooltips": "~0.1.10",
-    "fontawesome": "~4.3.0"
+    "fontawesome": "~4.3.0",
+    "twix": "~0.6.4"
   }
 }
