@@ -4,7 +4,7 @@
   "authors": [
     "Andreas Heigl <andreas@heigl.org>"
   ],
-  "description": "Show Events from different SOurces that currently have a CfP open",
+  "description": "Show Events from different Sources that currently have a CfP open",
   "main": "index.html",
   "keywords": [
     "cfp",
