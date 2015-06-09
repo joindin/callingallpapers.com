@@ -25,3 +25,118 @@ angular.module('callingallpapers', ['720kb.tooltips'])
             }
         };
     })
+
+    .filter('dateRangeFormat', function(){
+        Twix.registerLocale("en-gb", {
+            twentyFourHour: true,
+                allDaySimple: {
+                fn: function(options) {
+                    return function() {
+                        return options.allDay;
+                    };
+                },
+                slot: 1,
+                pre: " "
+            },
+            dayOfWeek: {
+                fn: function(options) {
+                    return function(date) {
+                        return date.format(options.weekdayFormat);
+                    };
+                },
+                slot: 6,
+                pre: " "
+            },
+            allDayMonth: {
+                fn: function(options) {
+                    return function(date) {
+                        return date.format("" + options.monthFormat + " " + options.dayFormat);
+                    };
+                },
+                slot: 5,
+                pre: " "
+            },
+            month: {
+                fn: function(options) {
+                    return function(date) {
+                        return date.format(options.monthFormat);
+                    };
+                },
+                slot: 3,
+                pre: " "
+            },
+            date: {
+                fn: function(options) {
+                    return function(date) {
+                        return date.format(options.dayFormat);
+                    };
+                },
+                slot: 2,
+                pre: " ",
+            },
+            year: {
+                fn: function(options) {
+                    return function(date) {
+                        return date.format(options.yearFormat);
+                    };
+                },
+                slot: 4,
+                pre: ", "
+            },
+            time: {
+                fn: function(options) {
+                    return function(date) {
+                        var str;
+                        str = date.minutes() === 0 && options.implicitMinutes && !options.twentyFourHour ? date.format(options.hourFormat) : date.format("" + options.hourFormat + ":" + options.minuteFormat);
+                        if (!options.groupMeridiems && !options.twentyFourHour) {
+                            if (options.spaceBeforeMeridiem) {
+                                str += " ";
+                            }
+                            str += date.format(options.meridiemFormat);
+                        }
+                        return str;
+                    };
+                },
+                slot: 7,
+                pre: ", "
+            },
+            meridiem: {
+                fn: function(options) {
+                    return (function(_this) {
+                        return function(t) {
+                            return t.format(options.meridiemFormat);
+                        };
+                    })(this);
+                },
+                slot: 8,
+                    pre: function(options) {
+                    if (options.spaceBeforeMeridiem) {
+                        return " ";
+                    } else {
+                        return "";
+                    }
+                }
+            }
+        });
+        return function(toDate, fromDate) {
+
+            if (! fromDate) {
+                fromDate = Date.now();
+            }
+            if (toDate && fromDate) {
+                moment.locale('en-gb');
+                fromDate = moment(fromDate);
+                return moment(toDate).twix(fromDate,{allDay: true}).format({
+                    yearFormat: "YYYY",
+                    monthFormat: "MMMM",
+                    weekdayFormat: "ddd",
+                    dayFormat: "D.",
+                    meridiemFormat: "A",
+                    hourFormat: "h",
+                    minuteFormat: "mm",
+                    allDay: "all day",
+
+                });
+            }
+        }
+    })
