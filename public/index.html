@@ -38,25 +38,32 @@
             <div class="row">
                 <div class="col-xs-12 col-md-8">
             <p class="alert alert-warning" ng-Show="search">Showing only events containing "<strong>{{search}}</strong>"</p>
-            <ul class="list-group" ng-controller="EventsCtrl">
-                <li class="list-group-item" ng-repeat="event in events | filter:search | orderBy: 'cfp_end_date' ">
-                    <h4>
-                        <a href="{{event.cfp_url}}">{{event.name}}</a>
-                        <span tooltips tooltip-content="CfP runs {{event.cfp_start_date | dateRangeFormat: event.cfp_end_date}}" class="badge">{{event.cfp_end_date | dateDiff : Date.now()}} Days left</span>
-                        <a ng-Hide="event.latitude==0 && event.longitude==0" class="pull-right" href="http://www.openstreetmap.org?mlat={{event.latitude}}&mlon={{event.longitude}}#map=5/{{event.latitude}}/{{event.longitude}}">
-                            <i class="fa fa-globe"></i>
+            <ul class="media-list" ng-controller="EventsCtrl">
+                <li class="media list-group-item" ng-repeat="event in events | filter:search | orderBy: 'cfp_end_date' ">
+                    <div class="media-left">
+                        <a href="{{ event.website_uri }}">
+                            <img src="https://joind.in/inc/img/event_icons/{{ event.icon || 'none.gif' }}" class="media-object"/>
                         </a>
-                    </h4>
-                    <div>
-                        {{event.description}}
                     </div>
-                    <div style="margin-bottom: 0.5em">
-                        <span ng-repeat="tag in event.tags" style="margin-right:0.5em;" class="label label-info">
-                            {{tag}}
-                        </span>
-                    </div>
-                    <div>
-                        {{ event.start_date | dateRangeFormat: event.end_date }} @ {{ event.location }}
+                    <div class="media-body">
+                        <h4 class="media-heading">
+                            <a href="{{event.cfp_url}}">{{event.name}}</a>
+                            <span tooltips tooltip-content="CfP runs {{event.cfp_start_date | dateRangeFormat: event.cfp_end_date}}" class="badge">{{event.cfp_end_date | dateDiff : Date.now()}} Days left</span>
+                            <a ng-Hide="event.latitude==0 && event.longitude==0" class="pull-right" href="http://www.openstreetmap.org?mlat={{event.latitude}}&mlon={{event.longitude}}#map=5/{{event.latitude}}/{{event.longitude}}">
+                                <i class="fa fa-globe"></i>
+                            </a>
+                        </h4>
+                        <div>
+                            {{event.description}}
+                        </div>
+                        <div style="margin-bottom: 0.5em">
+                            <span ng-repeat="tag in event.tags" style="margin-right:0.5em;" class="label label-info">
+                                {{tag}}
+                            </span>
+                        </div>
+                        <div>
+                            {{ event.start_date | dateRangeFormat: event.end_date }} @ {{ event.location }}
+                        </div>
                     </div>
                 </li>
             </ul>
