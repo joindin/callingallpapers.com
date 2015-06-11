@@ -140,5 +140,5 @@ angular.module('callingallpapers', ['720kb.tooltips'])
 
                 });
             }
-        }
-    })
+        };
+    });
