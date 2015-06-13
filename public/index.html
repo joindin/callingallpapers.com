@@ -54,10 +54,9 @@
                 <div class="collapse navbar-collapse">
                     <ul class="nav navbar-nav">
                         <li><a class="" href="feed.ical"><i class="fa fa-calendar"></i></a></li>
-                        <li><a class="" href="feed.xml"><i class="fa fa-rss"></i></a></li>
+                        <li><a class="" href="atom.xml"><i class="fa fa-rss"></i></a></li>
                     </ul>
                         <!-- Collect the nav links, forms, and other content for toggling -->
-                    <a class="navbar-right navbar-btn btn btn-success" href="http://joind.in/event/submit">Add Event</a>
                     <form class="navbar-form navbar-right" role="search">
                         <div class="form-group">
                             <input type="text" class="form-control" ng-model="search" placeholder="Filter">
@@ -70,6 +69,7 @@
             <div class="row">
                 <div class="col-xs-12 col-md-8">
             <p class="alert alert-warning" ng-Show="search">Showing only events containing "<strong>{{search}}</strong>"</p>
+            <a class="btn-block btn btn-default" href="http://joind.in/event/submit"><i class="fa fa-plus-square-o"></i> Add Event</a>
             <ul class="media-list" ng-controller="EventsCtrl">
                 <li class="media list-group-item" ng-repeat="event in events | filterCfps:search | orderBy: 'dateCfpEnd' ">
                     <div class="media-left">
