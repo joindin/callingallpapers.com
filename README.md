@@ -8,7 +8,7 @@ This is just a draft currently. The thing that comes before "Pre-Alpha" you coul
 
 ## Setup
 
-This site runs with [Angular.js](https://angularjs.org/).
+This site runs with [AngularJS](https://angularjs.org/).
 
 Angular.js and all the other dependencies can be installed using [Bower](http://bower.io/). To
 install bower have a look at http://bower.io/#install-bower. It basically boils down to running
