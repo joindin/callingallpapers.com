@@ -2,7 +2,7 @@
 
 This site shows open Calls for Papers (CfPs) that are available via the [joind.in-API](http://api.joind.in)
 
-### Welcome
+## Welcome
 
 The Joind.in project welcomes all contributors regardless of your ability or experience. We
 especially welcome you if you are new to Open Source development and will provide a helping hand. To
