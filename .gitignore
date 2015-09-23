@@ -1,1 +1,4 @@
 public/inc/lib
+dist
+node_modules
+.tmp
