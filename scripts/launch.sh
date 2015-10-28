@@ -16,6 +16,8 @@ then
 fi
 
 bower install
+npm install
+grunt
 
 mkdir -p $TARGET_BASE/$BUILD_NUMBER
 
