@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <project name="callingallpapers" default="build" basedir=".">
-    <target name="build" depends="bower" />
+    <target name="build" depends="composer, bower" />
 
     <target name="checkAndBuild" depends="jslint, csslint, build"/>
 
@@ -41,6 +41,26 @@
         <echo>Installing Dependencies using 'bower'</echo>
         <exec executable="bower" dir="${phing.dir}" checkreturn="true">
             <arg line="update"/>
+        </exec>
+    </target>
+
+    <!--
+    This target requires composer to be installed.
+    -->
+    <target name="composer" description=">Get PHP-Dependencies">
+        <echo>Installing PHP-Dependencies using composer</echo>
+        <exec executable="composer" dir="${phing.dir}" checkreturn="true">
+            <arg line="install"/>
+        </exec>
+    </target>
+
+    <!--
+    Create an atom-feed
+    -->
+    <target name="content.atom" description="Create the atom-feed">
+        <echo>Creating the ATOM-feed</echo>
+        <exec executable="php" dir="${phing.dir}" checkreturn="true">
+            <arg line="bin/callingallpapers.php create:atom public/atom.xml"/>
         </exec>
     </target>
 </project>
