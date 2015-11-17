@@ -14,7 +14,6 @@ require_once __DIR__ . '/../vendor/autoload.php';
 use Symfony\Component\Console\Application; 
 
 $app = new Application();
-$app->add(new \Callingallpapers\Command\ParsePhpNetEvents());
 $app->add(new \Callingallpapers\Command\ParseLanyrdEvents());
 
 $app->run();
