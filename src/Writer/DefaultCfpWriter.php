@@ -9,6 +9,7 @@
 
 namespace Callingallpapers\Writer;
 
+use Callingallpapers\Entity\Cfp;
 use Callingallpapers\Parser\ParserInterface;
 
 class DefaultCfpWriter
@@ -16,6 +17,26 @@ class DefaultCfpWriter
 
     public function write(ParserInterface $parser)
     {
-        return json_encode($parser->getContent());
+        $now = (new \DateTime())->format('c');
+        $content = [];
+        /** @var Cfp $cfp */
+        foreach ($parser->getContent() as $cfp) {
+            $content[] = array(
+                'name' => $cfp->conferenceName,
+                'website_uri' => $cfp->conferenceUri,
+                'cfp_url' => $cfp->uri,
+                'cfp_start_date' => $now,
+                'cfp_end_date' => $cfp->dateEnd->format('c'),
+                'description' => $cfp->description,
+                'tags' => $cfp->tags,
+                'start_date' => $cfp->eventStartDate->format('c'),
+                'end_date' => $cfp->eventEndDate->format('c'),
+                'location' => $cfp->location,
+                'latitude' => (float) $cfp->latitude,
+                'longitude' => (float)  $cfp->longitude,
+            );
+        }
+
+        return json_encode($content);
     }
 }

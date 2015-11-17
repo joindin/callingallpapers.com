@@ -26,4 +26,12 @@ class Cfp
     public $location = '';
 
     public $geolocation = '';
+
+    public $eventStartDate = '';
+
+    public $eventEndDate = '';
+
+    public $latitude = '';
+
+    public $longitude = '';
 }
