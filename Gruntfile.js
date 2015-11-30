@@ -48,6 +48,19 @@ module.exports = function (grunt) {
          }
       },
 
+      uncss: {
+         dist: {
+            options: {
+               htmlroot: '.',
+               ignore: [/_720kb-/],
+               stylesheets: ['/<%= config.tmp %>/concat/css/main.css'],
+            },
+            files: {
+               '<%= config.tmp %>/concat/css/main.css': ['<%= config.dist %>/index.html']
+            }
+         }
+      },
+
       useminPrepare: {
          options: {
             dest: '<%= config.dist %>'
@@ -73,6 +86,7 @@ module.exports = function (grunt) {
       'useminPrepare',
       'copy',
       'concat',
+      'uncss',
       'cssmin',
       'uglify',
       'filerev',
