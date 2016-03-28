@@ -12,10 +12,25 @@
         <link rel="stylesheet" href="inc/lib/fontawesome/css/font-awesome.min.css">
 
         <style type="text/css">
-        [ng\:cloak], [ng-cloak], [data-ng-cloak], [x-ng-cloak], .ng-cloak, .x-ng-cloak {
-          display: none !important;
-        }
-            .sponsors {margin-top: 5em;}
+            [ng\:cloak], [ng-cloak], [data-ng-cloak], [x-ng-cloak], .ng-cloak, .x-ng-cloak {
+                display: none !important;
+            }
+            .sponsors {
+                margin-top: 5em;
+            }
+            @media (max-width: 480px) {
+                .media-left {
+                    display:block;
+                    margin-bottom: 0.5em;
+                }
+                .media-body {
+                    display:block;
+                    width: 100%;
+                }
+                .label {
+                    display: inline-block;
+                }
+            }
         </style>
         <!-- endbuild -->
     </head>
@@ -48,16 +63,16 @@
                 <div class="col-xs-12 col-md-8">
             <p class="alert alert-warning" ng-Show="search">Showing only events containing "<strong>{{search}}</strong>"</p>
             <ul class="media-list" ng-controller="EventsCtrl">
-                <li class="media list-group-item" ng-repeat="event in events | filter:search | orderBy: 'cfp_end_date' ">
+                <li class="media list-group-item" ng-repeat="event in events | filter:search | orderBy: 'dateCfpEnd' ">
                     <div class="media-left">
-                        <a href="{{ event.website_uri }}">
-                            <img src="https://joind.in/inc/img/event_icons/{{ event.icon || 'none.gif' }}" class="media-object"/>
+                        <a href="{{ event.  eventUri }}">
+                            <img src="{{ event.iconUri || 'https://joind.in/inc/img/event_icons/none.gif' }}" class="media-object"/>
                         </a>
                     </div>
                     <div class="media-body">
                         <h4 class="media-heading">
-                            <a href="{{event.cfp_url}}">{{event.name}}</a>
-                            <span tooltips tooltip-content="CfP runs {{event.cfp_start_date | dateRangeFormat: event.cfp_end_date}}" class="badge">{{event.cfp_end_date | dateDiff : Date.now()}} Days left</span>
+                            <a href="{{event.uri}}">{{event.name}}</a>
+                            <span tooltips tooltip-content="CfP runs {{event.dateCfpStart | dateRangeFormat: event.dateCfpEnd}}" class="badge">{{event.dateCfpEnd | dateDiff : Date.now()}} Days left</span>
                             <a ng-Hide="event.latitude==0 && event.longitude==0" class="pull-right" href="http://www.openstreetmap.org?mlat={{event.latitude}}&mlon={{event.longitude}}#map=5/{{event.latitude}}/{{event.longitude}}">
                                 <i class="fa fa-globe"></i>
                             </a>
@@ -66,18 +81,16 @@
                             {{event.description}}
                         </div>
                         <div style="margin-bottom: 0.5em">
-                            <span ng-repeat="tag in event.tags" style="margin-right:0.5em;" class="label label-info">
-                                {{tag}}
-                            </span>
+                            <span ng-repeat="tag in event.tags" style="margin-right:0.5em;" class="label label-info">{{tag}}</span>
                         </div>
                         <div>
-                            {{ event.start_date | dateRangeFormat: event.end_date }} @ {{ event.location }}
+                            {{ event.dateEventStart | dateRangeFormat: event.dateEventEnd }} @ {{ event.location }}
                         </div>
                     </div>
                 </li>
             </ul>
                 </div>
-                <div class="col-xs-6 col-md-4">
+                <div class="col-xs-12 col-md-4">
                     <p>
                         This is a list of currently open <strong>Calls for Papers</strong> that are known to <a href="http://joind.in">joind.in</a>.
                         So if the Call for Papers of <strong>your</strong> event is missing in the list, chances are high that it is not listed on <a href="http://joind.in">joind.in</a>.

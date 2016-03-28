@@ -3,10 +3,9 @@
  */
 angular.module('callingallpapers', ['720kb.tooltips'])
     .controller('EventsCtrl', ['$scope', '$http', function($scope, $http) {
-        //$http.get('events.json').then(function(eventsResponse) {
-        $http.jsonp('http://api.joind.in/v2.1/events?filter=cfp&verbose=yes&callback=JSON_CALLBACK')
+        $http.get('http://api.callingallpapers.com/v1/cfp')
             .success(function(eventsResponse) {
-                $scope.events = eventsResponse.events;
+                $scope.events = eventsResponse.cfps;
             });
     }])
 
