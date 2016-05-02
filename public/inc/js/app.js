@@ -52,12 +52,15 @@ angular.module('callingallpapers', ['720kb.tooltips'])
                 if (l.name.indexOf(obj) >= 0) {
                     return true;
                 }
-                if (l.tags.indexOf(obj) >= 0) {
-                    return true;
-                }
-
-                return false;
-
+                return l.tags.map(function(value, key) {
+                        if (value.indexOf(obj) >= 0) {
+                            return true;
+                        }
+                        return false;
+                    }).reduce(function(prev, current) {
+                    if (true == prev) {return true;}
+                    return current;
+                }, false);
             });
         };
     })
