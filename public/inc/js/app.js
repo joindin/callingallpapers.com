@@ -27,6 +27,44 @@ angular.module('callingallpapers', ['720kb.tooltips'])
         };
     })
 
+    .filter('filterCfps', function(){
+        return function(list, obj) {
+
+            if (typeof list === "undefined") {
+                return true;
+            }
+            
+            return list.filter(function(l) {
+
+                if (typeof obj === "undefined") {
+                    return true;
+                }
+
+                if (obj == '') {
+                    return true;
+                }
+
+                obj = obj.toLowerCase();
+
+                if (l.description.toLowerCase().indexOf(obj) >= 0) {
+                    return true;
+                }
+                if (l.name.indexOf(obj) >= 0) {
+                    return true;
+                }
+                return l.tags.map(function(value, key) {
+                        if (value.indexOf(obj) >= 0) {
+                            return true;
+                        }
+                        return false;
+                    }).reduce(function(prev, current) {
+                    if (true == prev) {return true;}
+                    return current;
+                }, false);
+            });
+        };
+    })
+
     .filter('dateRangeFormat', function(){
         Twix.registerLocale("en-gb", {
             twentyFourHour: true,
