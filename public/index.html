@@ -80,8 +80,7 @@
                                 <i class="fa fa-globe"></i>
                             </a>
                         </h4>
-                        <div>
-                            {{event.description}}
+                        <div ng-text-truncate="{{event.description}}" ng-tt-words-threshold="40">
                         </div>
                         <div style="margin-bottom: 0.5em">
                             <span ng-repeat="tag in event.tags" style="margin-right:0.5em;" class="label label-info">{{tag}}</span>
