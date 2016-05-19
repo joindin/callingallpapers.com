@@ -68,13 +68,13 @@
             <ul class="media-list" ng-controller="EventsCtrl">
                 <li class="media list-group-item" ng-repeat="event in events | filterCfps:search | orderBy: 'dateCfpEnd' ">
                     <div class="media-left">
-                        <a href="{{ event.  eventUri }}">
+                        <a href="{{ event.eventUri }}">
                             <img src="{{ event.iconUri || 'https://joind.in/inc/img/event_icons/none.gif' }}" class="media-object"/>
                         </a>
                     </div>
                     <div class="media-body">
                         <h4 class="media-heading">
-                            <a href="{{event.uri}}">{{event.name}}</a>
+                            <a href="{{event.uri}}" ng-bind-html="event.name"></a>
                             <span tooltips tooltip-content="CfP runs {{event.dateCfpStart | dateRangeFormat: event.dateCfpEnd}}" class="badge">{{event.dateCfpEnd | dateDiff : Date.now()}} Days left</span>
                             <a ng-Hide="event.latitude==0 && event.longitude==0" class="pull-right" href="http://www.openstreetmap.org?mlat={{event.latitude}}&mlon={{event.longitude}}#map=5/{{event.latitude}}/{{event.longitude}}">
                                 <i class="fa fa-globe"></i>
@@ -130,6 +130,7 @@
         <script src="inc/lib/angularjs/angular.min.js"></script>
         <script src="inc/lib/angularjs/i18n/angular-locale_en-UK.js"></script>
         <script src="inc/lib/angular-tooltips/dist/angular-tooltips.min.js"></script>
+        <script src="inc/lib/angular-sanitize/angular-sanitize.min.js"></script>
         <script src="inc/lib/moment/min/moment-with-locales.min.js"></script>
         <script src="inc/lib/twix/bin/twix.min.js"></script>
         <script src="inc/lib/twix/bin/locale.min.js"></script>
