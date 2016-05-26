@@ -40,7 +40,7 @@ angular.module('callingallpapers', ['720kb.tooltips', 'ngSanitize'])
                     return true;
                 }
 
-                if (obj == '') {
+                if (obj === '') {
                     return true;
                 }
 
@@ -58,7 +58,7 @@ angular.module('callingallpapers', ['720kb.tooltips', 'ngSanitize'])
                         }
                         return false;
                     }).reduce(function(prev, current) {
-                    if (true == prev) {return true;}
+                    if (true === prev) {return true;}
                     return current;
                 }, false);
             });
