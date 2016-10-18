@@ -3,7 +3,7 @@
  */
 angular.module('callingallpapers', ['720kb.tooltips', 'ngSanitize'])
     .controller('EventsCtrl', ['$scope', '$http', function($scope, $http) {
-        $http.get('http://api.callingallpapers.com/v1/cfp')
+        $http.get('https://api.callingallpapers.com/v1/cfp')
             .success(function(eventsResponse) {
                 $scope.events = eventsResponse.cfps;
             });
