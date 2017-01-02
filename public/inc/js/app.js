@@ -1,7 +1,10 @@
 /**
  * Created by heiglandreas on 05.06.15.
  */
-angular.module('callingallpapers', ['720kb.tooltips', 'ngSanitize'])
+angular.module('callingallpapers', ['720kb.tooltips', 'ngSanitize', 'ui.bootstrap'])
+    .controller('CollapseCtrl', ['$scope', function ($scope) {
+        $scope.isNavCollapsed = true;
+    }])
     .controller('EventsCtrl', ['$scope', '$http', function($scope, $http) {
         $http.get('https://api.callingallpapers.com/v1/cfp')
             .success(function(eventsResponse) {
@@ -316,5 +319,5 @@ angular.module('callingallpapers', ['720kb.tooltips', 'ngSanitize'])
                     }
                 }
             };
-        }]);
-
+        }])
+;

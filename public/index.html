@@ -54,11 +54,11 @@
         <!-- endbuild -->
     </head>
     <body ng-cloak>
-        <nav class="navbar navbar-default">
+        <nav class="navbar navbar-default" ng-controller="CollapseCtrl">
             <div class="container-fluid">
                 <!-- Brand and toggle get grouped for better mobile display -->
                 <div class="navbar-header">
-                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                    <button type="button" class="navbar-toggle collapsed" ng-click="isNavCollapsed = !isNavCollapsed">
                         <span class="sr-only">Toggle navigation</span>
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
@@ -67,7 +67,7 @@
                     <a class="navbar-brand" href="#">CallingAllPapers</a>
                 </div>
 
-                <div class="collapse navbar-collapse">
+                <div class="collapse navbar-collapse" collapse="isCollapsed" uib-collapse="isNavCollapsed">
                     <ul class="nav navbar-nav">
                         <li><a class="" href="http://api.callingallpapers.com/v1/cfp?type=calendar"><i class="fa fa-calendar"></i></a></li>
                         <li><a class="" href="http://api.callingallpapers.com/v1/cfp?type=rss"><i class="fa fa-rss"></i></a></li>
@@ -75,9 +75,8 @@
                         <!-- Collect the nav links, forms, and other content for toggling -->
                     <form class="navbar-form navbar-right" role="search">
                         <div class="form-group">
-                            <input type="text" class="form-control" ng-model="search" placeholder="Filter">
+                            <input type="text" class="form-control" ng-model="$parent.search" placeholder="Filter">
                         </div>
-                        <!--a class="btn btn-success" href="http://joind.in/event/submit"><i class="fa fa-plus-square-o"></i> Add Event</a-->
                     </form>
                 </div><!-- /.navbar-collapse -->
             </div><!-- /.container-fluid -->
@@ -153,6 +152,7 @@
         <script src="inc/lib/angular-tooltips/dist/angular-tooltips.min.js"></script>
         <script src="inc/lib/angular-sanitize/angular-sanitize.min.js"></script>
         <script src="inc/lib/moment/min/moment-with-locales.min.js"></script>
+        <script src="inc/lib/angular-bootstrap/ui-bootstrap-tpls.min.js"></script>
         <script src="inc/lib/twix/bin/twix.min.js"></script>
         <script src="inc/lib/twix/bin/locale.min.js"></script>
         <script src="inc/js/app.js"></script>
