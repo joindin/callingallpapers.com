@@ -6,11 +6,10 @@ angular.module('callingallpapers', ['720kb.tooltips', 'ngSanitize', 'ui.bootstra
         $scope.isNavCollapsed = true;
     }])
     .controller('EventsCtrl', ['$scope', '$http', function($scope, $http) {
-       // $http.get('https://api.callingallpapers.com/v1/cfp')
-         $http.get('http://localhost:8081/v1/cfp')
-             .then(function(eventsResponse) {
+        $http.get('https://api.callingallpapers.com/v1/cfp')
+            .then(function(eventsResponse) {
                 $scope.events = eventsResponse.data.cfps;
-             });
+            });
     }])
 
     .filter('dateDiff', function () {
