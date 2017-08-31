@@ -104,6 +104,7 @@
                         </div>
                         <div style="margin-bottom: 0.5em">
                             <span ng-repeat="tag in event.tags" style="margin-right:0.5em;" class="label label-info">{{tag}}</span>
+                            <span ng-repeat="source in event.sources" style="margin-right:0.5em;" class="label label-primary">{{source}}</span>
                         </div>
                         <div>
                             {{ event.dateEventStart | dateRangeFormat: event.dateEventEnd }} @ {{ event.location }}
@@ -114,8 +115,19 @@
                 </div>
                 <div class="col-xs-12 col-md-4">
                     <p>
-                        This is a list of currently open <strong>Calls for Papers</strong> that are known to <a href="http://joind.in">joind.in</a> and <a href="https://lanyrd.com">lanyrd.com</a>.
-                        So if the Call for Papers of <strong>your</strong> event is missing in the list, chances are high that it is not listed on <a href="http://joind.in">joind.in</a> or <a href="https://lanyrd.com">lanyrd.com</a>.
+                        This is a list of currently open <strong>Calls for Papers</strong> (<abbr title="Call for Paper">CFP</abbr>).
+                    </p><p>
+                        To retrieve the list we crawl these sites on a daily basis
+                        to find new CfPs:
+                        <ul>
+                            <li><a href="http://joind.in">joind.in</a></li>
+                            <li><a href="https://lanyrd.com">lanyrd.com</a></li>
+                            <li><a href="https://papercall.io">papercall.io</a></li>
+                        </ul>
+                    </p><p>
+                        So if the Call for Papers of <strong>your</strong> event is
+                        missing in the list, chances are high that it is not listed on
+                        either of those platforms.
                     </p>
                     <h4>Frequently asked Questions</h4>
                     <dl>
