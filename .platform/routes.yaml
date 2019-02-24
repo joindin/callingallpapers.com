@@ -1,0 +1,15 @@
+"https://{default}/":
+  type: upstream
+  upstream: "callingallpapers_web:http"
+
+"https://www.{default}/":
+  type: redirect
+  to: "https://{default}/"
+
+"http://{default}/":
+  type: redirect
+  to: "https://{default}/"
+
+"http://www.{default}/":
+  type: redirect
+  to: "https://{default}/"
