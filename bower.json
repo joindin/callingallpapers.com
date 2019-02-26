@@ -21,12 +21,12 @@
     "tests"
   ],
   "dependencies": {
-    "angularjs": "^1.5.0",
+    "angularjs": "^1.5",
     "bootstrap": "~3.3.4",
     "angular-tooltips": "^0.1.10",
     "fontawesome": "~4.3.0",
     "twix": "~0.6.4",
-    "angular-sanitize": "^1.5.5",
+    "angular-sanitize": "^1.5",
     "angular-bootstrap": "^2.4.0"
   }
 }
