@@ -1,0 +1,26 @@
+name: callingallpapers_web
+type: nodejs:8.9
+
+build:
+  flavor: default
+
+hooks:
+  build: |
+    node_modules/bower/bin/bower install
+
+web:
+  commands:
+    start: sleep infinity
+  locations:
+    "/":
+      root: "public"
+      index:
+      - "index.html"
+      expires: 300s
+      scripts: false
+      headers:
+        X-Frame-Options: SAMEORIGIN
+
+disk: 512
+access:
+  ssh: admin
