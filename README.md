@@ -10,11 +10,6 @@ ensure that everyone understands what we expect from our community, our projects
 Code of Conduct](CODE_OF_CONDUCT.md) and by participating in the development of joind.in you agree
 to abide by its terms.
 
-
-## Limitations
-
-This is just a draft currently. The thing that comes before "Pre-Alpha" you could say. 
-
 ## Setup
 
 This site runs with [AngularJS](https://angularjs.org/).
