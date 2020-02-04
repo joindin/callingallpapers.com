@@ -6,10 +6,14 @@ angular.module('callingallpapers', ['720kb.tooltips', 'ngSanitize', 'ui.bootstra
         $scope.isNavCollapsed = true;
     }])
     .controller('EventsCtrl', ['$scope', '$http', function($scope, $http) {
+        $scope.loading = true;
         $scope.events = [];
         $http.get('https://api.callingallpapers.com/v1/cfp')
             .then(function(eventsResponse) {
                 $scope.events = eventsResponse.data.cfps;
+            })
+            .finally(function() {
+                $scope.loading = false;
             });
     }])
 
