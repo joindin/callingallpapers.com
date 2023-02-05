@@ -17,3 +17,11 @@
 "https://{default}/.well-known/host-meta":
   type: redirect
   to: "https://social.{default}/.well-known/host-meta"
+
+"https://{default}/.well-known/webfinger":
+  type: redirect
+  to: "https://social.{default}/.well-known/webfinger"
+
+"https://{default}/.well-known/nodeinfo":
+  type: redirect
+  to: "https://social.{default}/.well-known/nodeinfo"
