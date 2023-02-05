@@ -13,3 +13,7 @@
 "http://www.{default}/":
   type: redirect
   to: "https://{default}/"
+
+"https://{default}/.well-known/host-meta":
+  type: redirect
+  to: "https://social.{default}/.well-known/host-meta"
