@@ -25,3 +25,6 @@
 "https://{default}/.well-known/nodeinfo":
   type: redirect
   to: "https://social.{default}/.well-known/nodeinfo"
+
+tls:
+    min_version: TLSv1.3
